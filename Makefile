@@ -1,15 +1,29 @@
-all: unify.o AbstractAutomata.o FloatNode.o FormulaNode.o IntegerNode.o \
-		KeywordSet.o LineFileReader.o Parser.o ParserTableAction.o \
-		ParserTable.o ParserTableKey.o SymbolNode.o SyntaxNode.o \
-		TermListNode.o TermNode.o Token.o Tokenizer.o Unifier.o \
-		UnifyAutomata.o UnifyNode.o UnifyParser.o UnifyParserTable.o \
+OBJECTS = unify.o \
+		AbstractAutomata.o \
+		FloatNode.o \
+		FormulaNode.o \
+		IntegerNode.o \
+		KeywordSet.o \
+		LineFileReader.o \
+		Parser.o \
+		ParserTableAction.o \
+		ParserTable.o \
+		ParserTableKey.o \
+		SymbolNode.o \
+		SyntaxNode.o \
+		TermListNode.o \
+		TermNode.o \
+		Token.o \
+		Tokenizer.o \
+		Unifier.o \
+		UnifyAutomata.o \
+		UnifyNode.o \
+		UnifyParser.o \
+		UnifyParserTable.o \
 		VarNode.o
-	g++ unify.o AbstractAutomata.o FloatNode.o FormulaNode.o IntegerNode.o \
-		KeywordSet.o LineFileReader.o Parser.o ParserTableAction.o \
-		ParserTable.o ParserTableKey.o SymbolNode.o SyntaxNode.o \
-		TermListNode.o TermNode.o Token.o Tokenizer.o Unifier.o \
-		UnifyAutomata.o UnifyNode.o UnifyParser.o UnifyParserTable.o \
-		VarNode.o -o unify
+
+all: $(OBJECTS)
+	g++ $(OBJECTS) -o unify
 
 unify.o: unify.cpp
 	g++ -c unify.cpp
@@ -81,9 +95,4 @@ VarNode.o: VarNode.cpp VarNode.h
 	g++ -c VarNode.cpp
 
 clean:
-	rm -f unify.o AbstractAutomata.o FloatNode.o FormulaNode.o IntegerNode.o \
-		KeywordSet.o LineFileReader.o Parser.o ParserTableAction.o \
-		ParserTable.o ParserTableKey.o SymbolNode.o SyntaxNode.o \
-		TermListNode.o TermNode.o Token.o Tokenizer.o Unifier.o \
-		UnifyAutomata.o UnifyNode.o UnifyParser.o UnifyParserTable.o \
-		VarNode.o
+	rm -f $(OBJECTS)
