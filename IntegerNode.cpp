@@ -1,5 +1,5 @@
 #include "IntegerNode.h"
-#include "Token.h"
+#include "BlurParser/Core/Token.h"
 
 #include <iostream>
 using std::cout;

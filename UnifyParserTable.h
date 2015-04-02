@@ -1,7 +1,7 @@
 #ifndef UNIFY_PARSER_TABLE_H
 #define UNIFY_PARSER_TABLE_H
 
-#include "ParserTable.h"
+#include "BlurParser/Parser/ParserTable.h"
 
 #include <map>
 using std::map;
@@ -36,6 +36,10 @@ public:
     virtual bool hasKey(const ParserTableKey & key) const;
     ///
     virtual ParserTableAction * getAction(const ParserTableKey & key) const;
+    ///
+    virtual int getRuleLength(int ruleNumber);
+    ///
+    virtual int getNonTerminalType(int ruleNumber);
 };
 
 #endif /// UNIFY_PARSER_TABLE_H

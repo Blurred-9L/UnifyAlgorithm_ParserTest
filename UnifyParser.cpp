@@ -1,11 +1,11 @@
 #include "UnifyParser.h"
 #include "UnifyParserTable.h"
-#include "ParserTableAction.h"
-#include "ParserTableKey.h"
-#include "Tokenizer.h"
-#include "Token.h"
+#include "BlurParser/Parser/ParserTableAction.h"
+#include "BlurParser/Parser/ParserTableKey.h"
+#include "BlurParser/Tokenizer/Tokenizer.h"
+#include "BlurParser/Core/Token.h"
 #include "UnifyAutomata.h"
-#include "KeywordSet.h"
+#include "BlurParser/Tokenizer/KeywordSet.h"
 
 #include "VarNode.h"
 #include "SymbolNode.h"
@@ -49,35 +49,6 @@ SyntaxNode * UnifyParser::getSyntaxTreeRoot()
 ///////////////
 // Protected //
 ///////////////
-
-int UnifyParser::getRuleLength(int ruleNumber)
-{
-    int popTimes[] = {0, 3, 1, 1, 1, 1, 1, 3, 4, 1, 3};
-    
-    return popTimes[ruleNumber];
-}
-
-int UnifyParser::getNonTerminalType(int ruleNumber)
-{
-    int nonTermType;
-    
-    switch (ruleNumber) {
-        case 1:
-            nonTermType = UnifyParserTable::UNIFICATION;
-            break;
-        case 2: case 3: case 4: case 5: case 6:
-            nonTermType = UnifyParserTable::TERM;
-            break;
-        case 7: case 8:
-            nonTermType = UnifyParserTable::ATOMIC_FORMULA;
-            break;
-        case 9: case 10:
-            nonTermType = UnifyParserTable::TERM_LIST;
-            break;
-    }
-    
-    return nonTermType;
-}
 
 SyntaxNode * UnifyParser::toSyntaxNode(Token * token)
 {

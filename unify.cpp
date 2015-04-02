@@ -1,7 +1,7 @@
 #include "Unifier.h"
 #include "UnifyParser.h"
 #include "UnifyAutomata.h"
-#include "Tokenizer.h"
+#include "BlurParser/Tokenizer/Tokenizer.h"
 
 #include <iostream>
 #include <string>

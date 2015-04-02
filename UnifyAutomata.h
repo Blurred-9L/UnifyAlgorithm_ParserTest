@@ -1,7 +1,7 @@
 #ifndef UNIFY_AUTOMATA_H
 #define UNIFY_AUTOMATA_H
 
-#include "AbstractAutomata.h"
+#include "BlurParser/Tokenizer/AbstractAutomata.h"
 
 /**
  *  @class  UnifyAutomata
@@ -40,7 +40,7 @@ public:
     };
     
     ///
-    UnifyAutomata();
+    explicit UnifyAutomata(const char * filename = 0);
     ///
     virtual ~UnifyAutomata();
     ///
@@ -48,9 +48,9 @@ public:
     ///
     virtual bool isAcceptState(int state) const;
     ///
-    virtual bool includeNextChar(int state, const string & line, int charIdx) const;
-    ///
     virtual int getTokenType(int state);
+    ///
+    virtual const char * getTokenName(int tokenType);
 };
 
 #endif /// NOT UNIFY_AUTOMATA_H

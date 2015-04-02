@@ -3,8 +3,8 @@
 #include "UnifyParser.h"
 #include "UnifyParserTable.h"
 #include "UnifyAutomata.h"
-#include "KeywordSet.h"
-#include "Tokenizer.h"
+#include "BlurParser/Tokenizer/KeywordSet.h"
+#include "BlurParser/Tokenizer/Tokenizer.h"
 #include "SyntaxNode.h"
 
 #include "UnifyNode.h"
@@ -57,7 +57,8 @@ bool Unifier::unify(const string & input)
     SyntaxNode * root;
     UnifyNode * uRoot;
     
-    parseOk = parser_->parse(input);
+    parser_->tokenizer().setLine(input);
+    parseOk = parser_->parse();
     if (parseOk) {
         root = parser_->getSyntaxTreeRoot();
         uRoot = dynamic_cast<UnifyNode *>(root);

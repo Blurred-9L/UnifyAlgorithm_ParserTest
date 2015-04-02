@@ -1,6 +1,6 @@
 #include "UnifyParserTable.h"
-#include "ParserTableKey.h"
-#include "ParserTableAction.h"
+#include "BlurParser/Parser/ParserTableKey.h"
+#include "BlurParser/Parser/ParserTableAction.h"
 #include "UnifyAutomata.h"
 
 using std::make_pair;
@@ -28,6 +28,35 @@ ParserTableAction * UnifyParserTable::getAction(const ParserTableKey & key) cons
     }
     
     return action;
+}
+
+int UnifyParserTable::getRuleLength(int ruleNumber)
+{
+    int popTimes[] = {0, 3, 1, 1, 1, 1, 1, 3, 4, 1, 3};
+    
+    return popTimes[ruleNumber];
+}
+
+int UnifyParserTable::getNonTerminalType(int ruleNumber)
+{
+    int nonTermType;
+    
+    switch (ruleNumber) {
+        case 1:
+            nonTermType = UnifyParserTable::UNIFICATION;
+            break;
+        case 2: case 3: case 4: case 5: case 6:
+            nonTermType = UnifyParserTable::TERM;
+            break;
+        case 7: case 8:
+            nonTermType = UnifyParserTable::ATOMIC_FORMULA;
+            break;
+        case 9: case 10:
+            nonTermType = UnifyParserTable::TERM_LIST;
+            break;
+    }
+    
+    return nonTermType;
 }
 
 ///////////////

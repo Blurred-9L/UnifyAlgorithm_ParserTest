@@ -1,17 +1,13 @@
 #ifndef UNIFY_PARSER_H
 #define UNIFY_PARSER_H
 
-#include "Parser.h"
+#include "BlurParser/Parser/Parser.h"
 
 /**
  *  @class  UnifyParser
  */
 class UnifyParser : public Parser {
 protected:
-    ///
-    virtual int getRuleLength(int ruleNumber);
-    ///
-    virtual int getNonTerminalType(int ruleNumber);
     ///
     virtual SyntaxNode * toSyntaxNode(Token * token);
     ///

@@ -4,8 +4,8 @@
 #include <algorithm>
 using std::binary_search;
 
-UnifyAutomata::UnifyAutomata() :
-    AbstractAutomata()
+UnifyAutomata::UnifyAutomata(const char * filename) :
+    AbstractAutomata(filename)
 {
 }
 
@@ -59,21 +59,6 @@ bool UnifyAutomata::isAcceptState(int state) const
     return binary_search(acceptedStates, acceptedStates + nTerminalStates_, state);
 }
 
-bool UnifyAutomata::includeNextChar(int state, const string & line, int charIdx) const
-{
-    bool ok = false;
-    int newState;
-    
-    if (charIdx + 1 < line.length()) {
-        newState = nextState(state, line[charIdx + 1]);
-        if (newState > 0) {
-            ok = true;
-        }
-    }
-    
-    return ok;
-}
-
 int UnifyAutomata::getTokenType(int state)
 {
     int type = -1;
@@ -106,4 +91,12 @@ int UnifyAutomata::getTokenType(int state)
     }
     
     return type;
+}
+
+const char * UnifyAutomata::getTokenName(int tokenType)
+{
+    const char * names[] = {"Variable", "Symbol", "Integer", "Float", "Left Parenthesis", "Right Parenthesis",
+                            "Comma", "Unify Operator", "EOI"};
+                            
+    return names[tokenType];
 }
